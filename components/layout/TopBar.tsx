@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Bell, ChevronDown, Moon } from "lucide-react";
+import { Search, Bell, ChevronDown } from "lucide-react";
 
 export function TopBar() {
   return (
