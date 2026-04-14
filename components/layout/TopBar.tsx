@@ -1,10 +1,20 @@
 "use client";
 
-import { Search, Bell, ChevronDown } from "lucide-react";
+import { Search, Bell, ChevronDown, Moon, Sun } from "lucide-react";
+import { useSidebar } from "@/context/SidebarContext";
+import { useTheme } from "@/hooks/useTheme";
 
 export function TopBar() {
+  const { collapsed } = useSidebar();
+  const { isDark, toggleTheme } = useTheme();
+
   return (
-    <header className="fixed top-0 right-0 left-0 lg:left-60 h-16 bg-white border-b border-border flex items-center px-6 gap-4 z-30">
+    <header
+      className={[
+        "fixed top-0 right-0 h-16 bg-card border-b border-border flex items-center px-6 gap-4 z-30 transition-[left] duration-300",
+        collapsed ? "left-0 lg:left-16" : "left-0 lg:left-60",
+      ].join(" ")}
+    >
       {/* Search */}
       <div className="flex-1 max-w-sm relative">
         <Search
@@ -24,6 +34,19 @@ export function TopBar() {
         <button className="hidden sm:flex items-center gap-1.5 text-sm text-text-secondary hover:text-text-primary border border-border rounded-lg px-3 py-2 hover:bg-surface-muted transition-colors">
           <span>TiwalaRx Main</span>
           <ChevronDown size={13} strokeWidth={2} />
+        </button>
+
+        {/* Theme toggle */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
+          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {isDark ? (
+            <Sun size={18} strokeWidth={1.75} />
+          ) : (
+            <Moon size={18} strokeWidth={1.75} />
+          )}
         </button>
 
         {/* Notifications */}
