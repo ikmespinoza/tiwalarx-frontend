@@ -16,7 +16,7 @@ export default function ShiftsPage() {
       {/* Page header */}
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl font-bold font-headline text-text-primary">
+          <h1 className="text-2xl font-extrabold font-headline text-text-primary">
             Shifts &amp; Scheduling
           </h1>
           <p className="text-sm text-text-secondary mt-1">

@@ -24,12 +24,12 @@ export function EmployeesClient() {
       {/* Page header */}
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-1">
-            HR &amp; Payroll
-          </p>
           <h1 className="text-2xl font-extrabold font-headline text-text-primary">
             Employees
           </h1>
+          <p className="text-sm text-text-secondary mt-1">
+            Manage staff profiles, roles, and information.
+          </p>
         </div>
       </div>
 
