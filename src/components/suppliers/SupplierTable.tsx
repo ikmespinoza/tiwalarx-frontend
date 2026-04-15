@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import {
   Star,
@@ -24,6 +25,7 @@ interface MenuPos {
 }
 
 function ActionMenu({ supplierId }: { supplierId: string }) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState<MenuPos>({ top: 0, right: 0 });
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -68,7 +70,7 @@ function ActionMenu({ supplierId }: { supplierId: string }) {
     >
       <button
         className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-text-primary hover:bg-surface-muted transition-colors"
-        onClick={() => setOpen(false)}
+        onClick={() => { setOpen(false); router.push(`/suppliers/${supplierId}/edit`); }}
       >
         <Pencil size={14} strokeWidth={1.75} className="text-text-secondary" />
         Edit Supplier
