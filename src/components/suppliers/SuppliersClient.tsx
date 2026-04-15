@@ -5,8 +5,10 @@ import { SupplierKpiCards } from "./SupplierKpiCards";
 import { SupplierFilters } from "./SupplierFilters";
 import { SupplierTable } from "./SupplierTable";
 import { SupplierInsightCards } from "./SupplierInsightCards";
+import { useRouter } from "next/navigation";
 
 export function SuppliersClient() {
+  const router = useRouter();
   return (
     <div className="space-y-6">
       {/* Page header */}
@@ -25,7 +27,10 @@ export function SuppliersClient() {
             <Download size={15} strokeWidth={1.75} />
             Export
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-colors">
+          <button
+            onClick={() => router.push("/suppliers/new")}
+            className="flex items-center gap-2 bg-primary text-white px-4 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm ml-auto"
+          >
             <Plus size={15} strokeWidth={1.75} />
             Add Supplier
           </button>

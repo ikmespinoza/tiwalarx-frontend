@@ -72,7 +72,7 @@ export default function ContactPersonsSection({
               className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors"
             >
               <Plus size={14} strokeWidth={2} />
-              Add Contact Person
+              Add Contact
             </button>
           </div>
         ) : (

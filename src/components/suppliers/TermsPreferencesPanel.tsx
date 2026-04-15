@@ -2,18 +2,21 @@ import { Settings } from "lucide-react";
 import type { Supplier } from "@/lib/mock-data/suppliers";
 
 interface TermsPreferencesPanelProps {
-  supplier: Supplier;
+  supplier?: Supplier;
+  blank?: boolean;
 }
 
 export default function TermsPreferencesPanel({
   supplier,
+  blank = false,
 }: TermsPreferencesPanelProps) {
-  const creditLimitValue = supplier.creditLimit
-    ? supplier.creditLimit.toLocaleString("en-PH", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      })
-    : "";
+  const creditLimitValue =
+    !blank && supplier?.creditLimit
+      ? supplier.creditLimit.toLocaleString("en-PH", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })
+      : "";
 
   return (
     <div className="bg-surface-muted rounded-xl border border-border p-6 shadow-sm space-y-6">
@@ -31,7 +34,7 @@ export default function TermsPreferencesPanel({
             Payment Terms
           </label>
           <select
-            defaultValue={supplier.paymentTerms}
+            defaultValue={blank ? "COD" : (supplier?.paymentTerms ?? "COD")}
             className="w-full bg-card border border-border rounded-lg px-4 py-2.5 text-sm text-text-primary font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none"
           >
             <option>COD</option>
@@ -68,7 +71,7 @@ export default function TermsPreferencesPanel({
           <div className="flex items-center gap-3">
             <input
               type="number"
-              defaultValue={supplier.leadTimeDays}
+              defaultValue={blank ? "" : (supplier?.leadTimeDays ?? "")}
               min={1}
               className="w-20 bg-card border border-border rounded-lg px-4 py-2.5 text-sm font-medium text-text-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
@@ -92,7 +95,7 @@ export default function TermsPreferencesPanel({
             <label className="relative inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
-                defaultChecked={supplier.isPreferred}
+                defaultChecked={!blank && (supplier?.isPreferred ?? false)}
                 className="sr-only peer"
                 readOnly
               />
