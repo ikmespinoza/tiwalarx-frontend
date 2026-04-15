@@ -14,6 +14,7 @@ import {
   LogOut,
   PanelLeftClose,
   PanelLeftOpen,
+  Truck,
 } from "lucide-react";
 import { useSidebar } from "@/context/SidebarContext";
 
@@ -24,6 +25,13 @@ const navGroups = [
       { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
       { href: "/inventory", label: "Inventory", icon: Package2 },
       { href: "/pos", label: "POS", icon: ShoppingCart },
+    ],
+  },
+  {
+    label: "Procurement",
+    items: [
+      { href: "/procurement", label: "Purchase Orders", icon: ShoppingCart },
+      { href: "/suppliers", label: "Suppliers", icon: Truck },
     ],
   },
   {
