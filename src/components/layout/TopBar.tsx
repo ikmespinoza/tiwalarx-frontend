@@ -1,12 +1,14 @@
 "use client";
 
-import { Search, Bell, ChevronDown, Moon, Sun } from "lucide-react";
+import { Search, Bell, ChevronDown, Moon, Sun, PanelRightOpen, PanelRightClose } from "lucide-react";
 import { useSidebar } from "@/context/SidebarContext";
+import { useOptionalRightPanel } from "@/context/RightPanelContext";
 import { useTheme } from "@/hooks/useTheme";
 
 export function TopBar() {
   const { collapsed } = useSidebar();
   const { isDark, toggleTheme } = useTheme();
+  const rightCtx = useOptionalRightPanel();
 
   return (
     <header
@@ -57,6 +59,21 @@ export function TopBar() {
           <Bell size={18} strokeWidth={1.75} />
           <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-danger" />
         </button>
+
+        {/* Right panel mobile toggle — only when RightPanelContext is present */}
+        {rightCtx && (
+          <button
+            onClick={rightCtx.toggleMobile}
+            className="lg:hidden p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
+            aria-label={rightCtx.mobileOpen ? "Close panel" : "Open panel"}
+          >
+            {rightCtx.mobileOpen ? (
+              <PanelRightClose size={18} strokeWidth={1.75} />
+            ) : (
+              <PanelRightOpen size={18} strokeWidth={1.75} />
+            )}
+          </button>
+        )}
       </div>
     </header>
   );
