@@ -1,6 +1,10 @@
 import { ChevronDown, Download, UserPlus } from "lucide-react";
 
-export function EmployeeFilters() {
+interface EmployeeFiltersProps {
+  onAddEmployee?: () => void;
+}
+
+export function EmployeeFilters({ onAddEmployee }: EmployeeFiltersProps) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       {/* Filter selects */}
@@ -42,7 +46,10 @@ export function EmployeeFilters() {
           <Download size={16} strokeWidth={2} />
           Export
         </button>
-        <button className="px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-opacity">
+        <button
+          onClick={onAddEmployee}
+          className="px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-opacity"
+        >
           <UserPlus size={16} strokeWidth={2} />
           Add Employee
         </button>

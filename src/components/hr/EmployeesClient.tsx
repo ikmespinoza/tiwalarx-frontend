@@ -5,9 +5,11 @@ import { employees } from "@/lib/mock-data/hr-employees";
 import { EmployeeFilters } from "./EmployeeFilters";
 import { EmployeeTable } from "./EmployeeTable";
 import { EmployeeDetailPanel } from "./EmployeeDetailPanel";
+import { AddEmployeeModal } from "./AddEmployeeModal";
 
 export function EmployeesClient() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [addModalOpen, setAddModalOpen] = useState(false);
 
   function handleToggle(id: string) {
     setSelectedId((prev) => (prev === id ? null : id));
@@ -33,7 +35,7 @@ export function EmployeesClient() {
         </div>
       </div>
 
-      <EmployeeFilters />
+      <EmployeeFilters onAddEmployee={() => setAddModalOpen(true)} />
 
       <EmployeeTable
         employees={employees}
@@ -42,6 +44,11 @@ export function EmployeesClient() {
       />
 
       <EmployeeDetailPanel employee={selectedEmployee} onClose={handleClose} />
+
+      <AddEmployeeModal
+        open={addModalOpen}
+        onClose={() => setAddModalOpen(false)}
+      />
     </div>
   );
 }

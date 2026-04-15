@@ -1,14 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import { AlarmClock } from "lucide-react";
+import { RequestOvertimeModal } from "./RequestOvertimeModal";
 
 export function OvertimeFab() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="fixed bottom-8 right-8 z-50 hidden lg:flex">
-      <button className="flex items-center gap-3 bg-card hover:bg-primary text-primary hover:text-primary-foreground px-6 py-4 rounded-2xl shadow-lg border border-border transition-all duration-300 hover:-translate-y-1 font-bold text-sm">
-        <AlarmClock size={18} strokeWidth={1.75} />
-        Request Overtime
-      </button>
-    </div>
+    <>
+      <div className="fixed bottom-8 right-8 z-50 hidden lg:flex">
+        <button
+          onClick={() => setOpen(true)}
+          className="flex items-center gap-3 bg-card hover:bg-primary text-primary hover:text-primary-foreground px-6 py-4 rounded-2xl shadow-lg border border-border transition-all duration-300 hover:-translate-y-1 font-bold text-sm"
+        >
+          <AlarmClock size={18} strokeWidth={1.75} />
+          Request Overtime
+        </button>
+      </div>
+
+      <RequestOvertimeModal open={open} onClose={() => setOpen(false)} />
+    </>
   );
 }
