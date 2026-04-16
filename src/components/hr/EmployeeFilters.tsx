@@ -1,10 +1,11 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { ChevronDown, Download, UserPlus } from "lucide-react";
 
-interface EmployeeFiltersProps {
-  onAddEmployee?: () => void;
-}
+export function EmployeeFilters() {
+  const router = useRouter();
 
-export function EmployeeFilters({ onAddEmployee }: EmployeeFiltersProps) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       {/* Filter selects */}
@@ -47,7 +48,7 @@ export function EmployeeFilters({ onAddEmployee }: EmployeeFiltersProps) {
           Export
         </button>
         <button
-          onClick={onAddEmployee}
+          onClick={() => router.push("/hr/employees/new")}
           className="px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-opacity"
         >
           <UserPlus size={16} strokeWidth={2} />
