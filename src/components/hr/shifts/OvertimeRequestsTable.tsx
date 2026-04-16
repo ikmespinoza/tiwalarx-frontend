@@ -1,4 +1,4 @@
-import { X, Check } from "lucide-react";
+import { CheckCircle, XCircle } from "lucide-react";
 import { overtimeRequests } from "@/lib/mock-data/hr-shifts";
 
 export function OvertimeRequestsTable() {
@@ -20,22 +20,22 @@ export function OvertimeRequestsTable() {
           <table className="w-full">
             <thead>
               <tr className="bg-surface-muted/30 border-b border-border">
-                <th className="p-4 text-left text-[10px] font-semibold uppercase text-text-muted tracking-widest">
+                <th className="px-6 py-4 text-left text-[10px] font-semibold uppercase text-text-secondary tracking-widest">
                   Employee
                 </th>
-                <th className="p-4 text-left text-[10px] font-semibold uppercase text-text-muted tracking-widest">
+                <th className="px-6 py-4 text-left text-[10px] font-semibold uppercase text-text-secondary tracking-widest">
                   Date
                 </th>
-                <th className="p-4 text-left text-[10px] font-semibold uppercase text-text-muted tracking-widest">
+                <th className="px-6 py-4 text-center text-[10px] font-semibold uppercase text-text-secondary tracking-widest">
                   Duration
                 </th>
-                <th className="hidden sm:table-cell p-4 text-left text-[10px] font-semibold uppercase text-text-muted tracking-widest">
+                <th className="hidden sm:table-cell px-6 py-4 text-left text-[10px] font-semibold uppercase text-text-secondary tracking-widest">
                   Reason
                 </th>
-                <th className="p-4 text-left text-[10px] font-semibold uppercase text-text-muted tracking-widest">
+                <th className="px-6 py-4 text-center text-[10px] font-semibold uppercase text-text-secondary tracking-widest">
                   Status
                 </th>
-                <th className="hidden sm:table-cell p-4 text-right text-[10px] font-semibold uppercase text-text-muted tracking-widest">
+                <th className="hidden sm:table-cell px-6 py-4 text-right text-[10px] font-semibold uppercase text-text-secondary tracking-widest">
                   Action
                 </th>
               </tr>
@@ -70,7 +70,7 @@ export function OvertimeRequestsTable() {
                   </td>
 
                   {/* Duration */}
-                  <td className="p-4 text-xs font-semibold text-text-primary whitespace-nowrap">
+                  <td className="p-4 text-xs font-semibold text-text-primary whitespace-nowrap text-center">
                     {req.duration}
                   </td>
 
@@ -80,7 +80,7 @@ export function OvertimeRequestsTable() {
                   </td>
 
                   {/* Status */}
-                  <td className="p-4">
+                  <td className="p-4 text-center">
                     {req.status === "pending" ? (
                       <span className="px-2 py-1 bg-warning-light text-warning text-[10px] font-semibold rounded-full uppercase">
                         Pending
@@ -97,16 +97,16 @@ export function OvertimeRequestsTable() {
                     {req.status === "pending" ? (
                       <div className="flex items-center justify-end gap-1">
                         <button
-                          className="p-1.5 rounded hover:bg-danger-light text-danger transition-colors"
-                          aria-label="Reject"
+                          className="p-1.5 text-success hover:bg-success-light rounded-lg transition-colors"
+                          title="Approve"
                         >
-                          <X size={14} strokeWidth={2} />
+                          <CheckCircle size={18} />
                         </button>
                         <button
-                          className="p-1.5 rounded hover:bg-success-light text-success transition-colors"
-                          aria-label="Approve"
+                          className="p-1.5 text-danger hover:bg-danger-light rounded-lg transition-colors"
+                          title="Reject"
                         >
-                          <Check size={14} strokeWidth={2} />
+                          <XCircle size={18} />
                         </button>
                       </div>
                     ) : (

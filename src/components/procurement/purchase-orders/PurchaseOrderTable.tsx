@@ -143,6 +143,7 @@ function formatAmount(amount: number): string {
 }
 
 export function PurchaseOrderTable() {
+  const totalPages = Math.ceil(TOTAL_PO_COUNT / PURCHASE_ORDERS.length);
   return (
     <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
@@ -164,16 +165,14 @@ export function PurchaseOrderTable() {
               <th className="px-6 py-4 text-[10px] font-bold text-text-secondary text-center uppercase tracking-widest font-headline hidden lg:table-cell">
                 Expected
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-widest font-headline">
+              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary text-right uppercase tracking-widest font-headline">
                 Total Amount
                 <p>Items</p>
               </th>
               <th className="px-6 py-4 text-[10px] font-bold text-text-secondary text-center uppercase tracking-widest font-headline">
                 Status
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-widest font-headline">
-                Actions
-              </th>
+              <th className="px-6 py-4 rounded-tr-xl" />
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
@@ -207,7 +206,7 @@ export function PurchaseOrderTable() {
                   <td className="px-6 py-4 text-xs font-medium text-text-secondary text-center hidden lg:table-cell">
                     {po.expectedDelivery ?? "—"}
                   </td>
-                  <td className="px-6 py-4 text-sm font-bold text-text-primary">
+                  <td className="px-6 py-4 text-sm font-bold text-text-primary text-right">
                     {formatAmount(po.totalAmount)}
                     <p className="text-xs font-medium text-primary">
                       {po.itemCount} items
@@ -231,28 +230,32 @@ export function PurchaseOrderTable() {
       </div>
 
       {/* Pagination */}
-      <div className="border-t border-border px-6 py-4 flex items-center justify-between">
+      <div className="px-6 py-4 bg-surface-muted/20 border-t border-border flex items-center justify-between">
         <p className="text-xs text-text-secondary font-medium">
-          Showing 1–{PURCHASE_ORDERS.length} of {TOTAL_PO_COUNT} purchase orders
+          Showing 1 to {PURCHASE_ORDERS.length} of {TOTAL_PO_COUNT} employees
         </p>
-        <div className="flex items-center gap-2">
-          <button
-            className="w-8 h-8 flex items-center justify-center rounded bg-surface-muted text-text-secondary opacity-30 cursor-not-allowed"
-            disabled
-          >
-            <ChevronLeft size={14} strokeWidth={2} />
+        <div className="flex items-center gap-1">
+          <button className="p-1 rounded hover:bg-border text-text-muted transition-colors">
+            <ChevronLeft size={16} />
           </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded bg-primary text-white text-xs font-bold">
-            1
-          </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded bg-card border border-border text-text-secondary hover:bg-surface-muted text-xs font-bold transition-colors">
-            2
-          </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded bg-card border border-border text-text-secondary hover:bg-surface-muted text-xs font-bold transition-colors">
-            3
-          </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded bg-surface-muted text-text-secondary hover:text-primary transition-colors">
-            <ChevronRight size={14} strokeWidth={2} />
+          {[1, 2, 3].map((page) => (
+            <button
+              key={page}
+              className={[
+                "w-8 h-8 rounded text-xs font-bold transition-colors",
+                page === 1
+                  ? "bg-primary text-primary-foreground"
+                  : "hover:bg-border text-text-secondary",
+              ].join(" ")}
+            >
+              {page}
+            </button>
+          ))}
+          {totalPages > 3 && (
+            <span className="text-xs text-text-muted px-1">…</span>
+          )}
+          <button className="p-1 rounded hover:bg-border text-text-muted transition-colors">
+            <ChevronRight size={16} />
           </button>
         </div>
       </div>

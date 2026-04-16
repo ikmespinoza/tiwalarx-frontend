@@ -25,7 +25,11 @@ function fullName(e: Employee) {
   return [e.firstName, e.lastName, e.suffix].filter(Boolean).join(" ");
 }
 
-export function EmployeeTable({ employees, selectedId, onToggle }: EmployeeTableProps) {
+export function EmployeeTable({
+  employees,
+  selectedId,
+  onToggle,
+}: EmployeeTableProps) {
   const totalPages = Math.ceil(TOTAL_EMPLOYEES / PAGE_SIZE);
 
   return (
@@ -34,27 +38,25 @@ export function EmployeeTable({ employees, selectedId, onToggle }: EmployeeTable
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-surface-muted/30 border-b border-border">
-              <th className="px-6 py-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary">
                 Employee
               </th>
-              <th className="px-6 py-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary">
                 Position
               </th>
-              <th className="hidden md:table-cell px-6 py-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted">
+              <th className="hidden md:table-cell px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary">
                 Branch
               </th>
-              <th className="px-6 py-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary text-center">
                 Type
               </th>
-              <th className="px-6 py-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary text-center">
                 Status
               </th>
-              <th className="hidden sm:table-cell px-6 py-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted text-right">
+              <th className="hidden sm:table-cell px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary text-right">
                 Rate (₱)
               </th>
-              <th className="px-6 py-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted text-center">
-                Actions
-              </th>
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary text-center" />
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
@@ -107,7 +109,7 @@ export function EmployeeTable({ employees, selectedId, onToggle }: EmployeeTable
                   </td>
 
                   {/* Type badge */}
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-center">
                     <span
                       className={[
                         "px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap",
@@ -120,7 +122,7 @@ export function EmployeeTable({ employees, selectedId, onToggle }: EmployeeTable
                   </td>
 
                   {/* Status badge */}
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-center">
                     <span
                       className={[
                         "px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap",
@@ -142,7 +144,9 @@ export function EmployeeTable({ employees, selectedId, onToggle }: EmployeeTable
                     <button
                       onClick={() => onToggle(employee.id)}
                       aria-label={
-                        isActive ? "Hide employee detail" : "Show employee detail"
+                        isActive
+                          ? "Hide employee detail"
+                          : "Show employee detail"
                       }
                       className={[
                         "p-2 rounded-full transition-colors",
@@ -167,7 +171,7 @@ export function EmployeeTable({ employees, selectedId, onToggle }: EmployeeTable
 
       {/* Pagination */}
       <div className="px-6 py-4 bg-surface-muted/20 border-t border-border flex items-center justify-between">
-        <p className="text-xs text-text-muted font-medium">
+        <p className="text-xs text-text-secondary font-medium">
           Showing 1 to {PAGE_SIZE} of {TOTAL_EMPLOYEES} employees
         </p>
         <div className="flex items-center gap-1">

@@ -67,7 +67,9 @@ function HoursCell({ record }: { record: AttendanceRecord }) {
 
   return (
     <div className="text-xs">
-      <p className="font-bold text-text-primary">{record.totalHours.toFixed(1)} hrs</p>
+      <p className="font-bold text-text-primary">
+        {record.totalHours.toFixed(1)} hrs
+      </p>
       <p className="text-text-muted">{record.overtimeHours.toFixed(1)} OT</p>
     </div>
   );
@@ -80,22 +82,22 @@ export function AttendanceTable() {
         <table className="w-full text-left border-collapse">
           <thead className="bg-surface-muted/50">
             <tr>
-              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-muted font-headline whitespace-nowrap">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary font-headline whitespace-nowrap">
                 Employee
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-muted font-headline whitespace-nowrap hidden md:table-cell">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary font-headline whitespace-nowrap hidden md:table-cell text-center">
                 Shift
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-muted font-headline whitespace-nowrap">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary font-headline whitespace-nowrap">
                 Time In / Out
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-muted font-headline whitespace-nowrap hidden sm:table-cell">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary font-headline whitespace-nowrap hidden sm:table-cell text-right">
                 Total / OT
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-muted font-headline whitespace-nowrap">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary font-headline whitespace-nowrap">
                 Remarks
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-muted font-headline whitespace-nowrap">
+              <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-text-secondary font-headline whitespace-nowrap text-center">
                 Status
               </th>
             </tr>
@@ -131,7 +133,7 @@ export function AttendanceTable() {
                   </td>
 
                   {/* Shift */}
-                  <td className="px-6 py-4 hidden md:table-cell">
+                  <td className="px-6 py-4 hidden md:table-cell text-center">
                     <span
                       className={`inline-flex items-center px-2 py-1 text-[11px] font-bold rounded-lg uppercase tracking-tight ${shiftStyle.bg} ${shiftStyle.text}`}
                     >
@@ -145,7 +147,7 @@ export function AttendanceTable() {
                   </td>
 
                   {/* Total / OT */}
-                  <td className="px-6 py-4 hidden sm:table-cell">
+                  <td className="px-6 py-4 hidden sm:table-cell text-right">
                     <HoursCell record={record} />
                   </td>
 
@@ -158,12 +160,14 @@ export function AttendanceTable() {
                         {record.remarks}
                       </span>
                     ) : (
-                      <span className="text-[11px] text-text-muted italic">—</span>
+                      <span className="text-[11px] text-text-muted italic">
+                        —
+                      </span>
                     )}
                   </td>
 
                   {/* Status */}
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-center">
                     <span
                       className={`px-3 py-1 text-[10px] font-extrabold uppercase rounded-full ${statusStyle.bg} ${statusStyle.text}`}
                     >
