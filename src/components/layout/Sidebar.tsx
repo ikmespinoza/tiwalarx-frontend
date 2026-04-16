@@ -15,6 +15,7 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
   Truck,
+  FileCheckCorner,
 } from "lucide-react";
 import { useSidebar } from "./SidebarContext";
 
@@ -30,7 +31,7 @@ const navGroups = [
   {
     label: "Procurement",
     items: [
-      { href: "/procurement", label: "Purchase Orders", icon: ShoppingCart },
+      { href: "/procurement", label: "Purchase Orders", icon: FileCheckCorner },
       { href: "/suppliers", label: "Suppliers", icon: Truck },
     ],
   },
