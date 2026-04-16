@@ -1,8 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useSidebar } from "@/context/SidebarContext";
-import { useOptionalRightPanel } from "@/context/RightPanelContext";
+import { useSidebar } from "./SidebarContext";
+import { useOptionalRightPanel } from "./RightPanelContext";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
 import { RightPanelShell } from "./RightPanelShell";

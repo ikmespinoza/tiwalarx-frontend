@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AlarmClock } from "lucide-react";
-import { RequestOvertimeModal } from "./RequestOvertimeModal";
+import { RequestOvertimeModal } from "./modals/RequestOvertime";
 
 export function OvertimeFab() {
   const [open, setOpen] = useState(false);

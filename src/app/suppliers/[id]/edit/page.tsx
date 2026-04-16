@@ -1,5 +1,5 @@
 import { SUPPLIERS } from "@/lib/mock-data/suppliers";
-import EditSupplierClient from "@/components/suppliers/EditSupplierClient";
+import EditSupplierClient from "@/components/suppliers/edit/EditSupplierClient";
 
 interface EditSupplierPageProps {
   params: Promise<{ id: string }>;

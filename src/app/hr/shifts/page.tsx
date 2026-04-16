@@ -1,5 +1,5 @@
-import { HrTabs } from "@/components/hr/HrTabs";
-import { ShiftsClient } from "@/components/hr/ShiftsClient";
+import { HrTabs } from "@/components/hr/_shared/HrTabs";
+import { ShiftsClient } from "@/components/hr/shifts/ShiftsClient";
 
 export default function ShiftsPage() {
   return (

@@ -1,5 +1,5 @@
-import { SidebarProvider } from "@/context/SidebarContext";
-import { RightPanelProvider } from "@/context/RightPanelContext";
+import { SidebarProvider } from "@/components/layout/SidebarContext";
+import { RightPanelProvider } from "@/components/layout/RightPanelContext";
 import { DashboardShell } from "@/components/layout/DashboardShell";
 import { InventorySummaryPanel } from "@/components/inventory/InventorySummaryPanel";
 

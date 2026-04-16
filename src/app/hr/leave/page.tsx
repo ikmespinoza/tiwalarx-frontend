@@ -1,5 +1,5 @@
-import { HrTabs } from "@/components/hr/HrTabs";
-import { LeaveClient } from "@/components/hr/LeaveClient";
+import { HrTabs } from "@/components/hr/_shared/HrTabs";
+import { LeaveClient } from "@/components/hr/leave/LeaveClient";
 
 export default function HrLeavePage() {
   return (

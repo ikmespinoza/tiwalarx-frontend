@@ -1,5 +1,5 @@
-import { HrTabs } from "@/components/hr/HrTabs";
-import { EmployeesClient } from "@/components/hr/EmployeesClient";
+import { HrTabs } from "@/components/hr/_shared/HrTabs";
+import { EmployeesClient } from "@/components/hr/employees/EmployeesClient";
 
 export default function HrPage() {
   return (

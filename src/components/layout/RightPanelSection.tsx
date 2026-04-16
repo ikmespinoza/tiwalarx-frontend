@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, type ReactNode } from "react";
-import { useRightPanel, RightPanelForceExpandedContext } from "@/context/RightPanelContext";
+import { useRightPanel, RightPanelForceExpandedContext } from "./RightPanelContext";
 
 type Props = {
   icon: ReactNode;

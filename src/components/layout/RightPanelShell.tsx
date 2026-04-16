@@ -2,7 +2,7 @@
 
 import { type ReactNode, useEffect, useState } from "react";
 import { PanelRightClose, PanelRightOpen } from "lucide-react";
-import { useRightPanel, RightPanelForceExpandedContext } from "@/context/RightPanelContext";
+import { useRightPanel, RightPanelForceExpandedContext } from "./RightPanelContext";
 
 export function RightPanelShell({ children }: { children: ReactNode }) {
   const { collapsed, toggleCollapsed, mobileOpen, toggleMobile } = useRightPanel();

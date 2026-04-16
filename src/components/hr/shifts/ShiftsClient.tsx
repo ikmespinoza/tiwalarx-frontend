@@ -8,7 +8,7 @@ import { WeeklyAnalyticsCard } from "./WeeklyAnalyticsCard";
 import { WeeklyScheduleGrid } from "./WeeklyScheduleGrid";
 import { OvertimeRequestsTable } from "./OvertimeRequestsTable";
 import { OvertimeFab } from "./OvertimeFab";
-import { CreateScheduleModal } from "./CreateScheduleModal";
+import { CreateScheduleModal } from "./modals/CreateSchedule";
 
 export function ShiftsClient() {
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);

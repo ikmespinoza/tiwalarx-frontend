@@ -16,7 +16,7 @@ import {
   PanelLeftOpen,
   Truck,
 } from "lucide-react";
-import { useSidebar } from "@/context/SidebarContext";
+import { useSidebar } from "./SidebarContext";
 
 const navGroups = [
   {

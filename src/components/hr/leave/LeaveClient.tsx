@@ -4,7 +4,7 @@ import { useState } from "react";
 import { LeaveFilters } from "./LeaveFilters";
 import { LeaveTable } from "./LeaveTable";
 import { LeaveBalancesPanel } from "./LeaveBalancesPanel";
-import { RequestLeaveModal } from "./RequestLeaveModal";
+import { RequestLeaveModal } from "./modals/RequestLeave";
 
 export function LeaveClient() {
   const [selectedLeaveId, setSelectedLeaveId] = useState<string | null>(null);

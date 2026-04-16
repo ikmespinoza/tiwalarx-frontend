@@ -1,8 +1,8 @@
 "use client";
 
 import { Search, Bell, ChevronDown, Moon, Sun, PanelRightOpen, PanelRightClose } from "lucide-react";
-import { useSidebar } from "@/context/SidebarContext";
-import { useOptionalRightPanel } from "@/context/RightPanelContext";
+import { useSidebar } from "./SidebarContext";
+import { useOptionalRightPanel } from "./RightPanelContext";
 import { useTheme } from "@/hooks/useTheme";
 
 export function TopBar() {
