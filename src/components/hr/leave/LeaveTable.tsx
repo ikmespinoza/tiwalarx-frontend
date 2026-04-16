@@ -14,29 +14,32 @@ interface LeaveTableProps {
   onSelectLeave: (id: string | null) => void;
 }
 
-export function LeaveTable({ selectedLeaveId, onSelectLeave }: LeaveTableProps) {
+export function LeaveTable({
+  selectedLeaveId,
+  onSelectLeave,
+}: LeaveTableProps) {
   return (
     <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-surface-muted border-b border-border">
-              <th className="px-5 py-3.5 text-[10px] font-semibold text-text-secondary uppercase tracking-wider">
+              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wider">
                 Employee
               </th>
-              <th className="px-5 py-3.5 text-[10px] font-semibold text-text-secondary uppercase tracking-wider">
+              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wider text-center">
                 Type
               </th>
-              <th className="px-5 py-3.5 text-[10px] font-semibold text-text-secondary uppercase tracking-wider">
+              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wider">
                 Dates
               </th>
-              <th className="px-5 py-3.5 text-[10px] font-semibold text-text-secondary uppercase tracking-wider text-center hidden md:table-cell">
+              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wider text-center hidden md:table-cell">
                 Days
               </th>
-              <th className="px-5 py-3.5 text-[10px] font-semibold text-text-secondary uppercase tracking-wider">
+              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wider text-center">
                 Status
               </th>
-              <th className="px-5 py-3.5 text-[10px] font-semibold text-text-secondary uppercase tracking-wider text-right hidden sm:table-cell">
+              <th className="px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wider text-right hidden sm:table-cell">
                 Actions
               </th>
             </tr>
@@ -75,8 +78,8 @@ function LeaveRow({
   const rowBg = isSelected
     ? "bg-primary-light"
     : isEven
-    ? "bg-card"
-    : "bg-background";
+      ? "bg-card"
+      : "bg-background";
 
   return (
     <tr
@@ -103,7 +106,7 @@ function LeaveRow({
       </td>
 
       {/* Type */}
-      <td className="px-5 py-4">
+      <td className="px-5 py-4 text-center">
         <span
           className={`px-2.5 py-0.5 text-[10px] font-bold uppercase rounded-full ${typeStyle.bg} ${typeStyle.text}`}
         >
@@ -122,11 +125,13 @@ function LeaveRow({
 
       {/* Days */}
       <td className="px-5 py-4 text-center hidden md:table-cell">
-        <span className="text-sm font-medium text-text-primary">{row.days}</span>
+        <span className="text-sm font-medium text-text-primary">
+          {row.days}
+        </span>
       </td>
 
       {/* Status */}
-      <td className="px-5 py-4">
+      <td className="px-5 py-4 text-center">
         <div
           className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-lg ${statusStyle.bg} ${statusStyle.text}`}
         >
@@ -136,7 +141,7 @@ function LeaveRow({
       </td>
 
       {/* Actions */}
-      <td className="px-5 py-4 text-right hidden sm:table-cell">
+      <td className="px-5 py-4 text-center hidden sm:table-cell">
         <div
           className="flex items-center justify-end gap-1"
           onClick={(e) => e.stopPropagation()}
@@ -157,12 +162,9 @@ function LeaveRow({
               </button>
             </>
           ) : (
-            <button
-              className="p-1.5 text-text-muted hover:bg-surface-muted rounded-lg transition-colors"
-              title="More"
-            >
-              <MoreVertical size={18} />
-            </button>
+            <span className="text-[10px] font-semibold text-text-muted">
+              Processed
+            </span>
           )}
         </div>
       </td>

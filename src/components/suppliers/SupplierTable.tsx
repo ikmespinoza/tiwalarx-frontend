@@ -16,6 +16,7 @@ import {
   PAYMENT_TERMS_BADGE_STYLES,
   STATUS_BADGE_STYLES,
   type Supplier,
+  TOTAL_SUPPLIERS,
 } from "@/lib/mock-data/suppliers";
 
 interface MenuPos {
@@ -70,7 +71,10 @@ function ActionMenu({ supplierId }: { supplierId: string }) {
     >
       <button
         className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-text-primary hover:bg-surface-muted transition-colors"
-        onClick={() => { setOpen(false); router.push(`/suppliers/${supplierId}/edit`); }}
+        onClick={() => {
+          setOpen(false);
+          router.push(`/suppliers/${supplierId}/edit`);
+        }}
       >
         <Pencil size={14} strokeWidth={1.75} className="text-text-secondary" />
         Edit Supplier
@@ -139,6 +143,7 @@ function ContactCell({ supplier }: { supplier: Supplier }) {
 }
 
 export function SupplierTable() {
+  const totalPages = Math.ceil(TOTAL_SUPPLIERS / SUPPLIERS.length);
   return (
     <div className="bg-card rounded-xl border border-border shadow-sm">
       {/* Desktop table */}
@@ -146,28 +151,30 @@ export function SupplierTable() {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-surface-muted border-b border-border">
-              <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wide rounded-tl-xl">
+              <th className="text-left px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wide rounded-tl-xl">
                 Supplier Name
               </th>
-              <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wide">
+              <th className="text-left px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wide">
                 Primary Contact
               </th>
-              <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wide">
+              <th className="text-center px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wide">
                 Payment Terms
               </th>
-              <th className="text-center px-5 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wide hidden lg:table-cell">
+              <th className="text-center px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wide hidden lg:table-cell">
                 Lead Time
               </th>
-              <th className="text-center px-5 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wide hidden lg:table-cell">
+              <th className="text-center px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wide hidden lg:table-cell">
                 Active POs
               </th>
-              <th className="text-right px-5 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wide">
+              <th className="text-right px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wide">
                 Purchases YTD
               </th>
-              <th className="text-center px-5 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wide">
+              <th className="text-center px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wide">
                 Status
               </th>
-              <th className="px-5 py-3 rounded-tr-xl" />
+              <th className="text-center px-6 py-4 text-[10px] font-bold text-text-secondary uppercase tracking-wide">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -212,7 +219,7 @@ export function SupplierTable() {
                   </td>
 
                   {/* Payment Terms */}
-                  <td className="px-5 py-4">
+                  <td className="px-5 py-4 text-center">
                     <span
                       className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${termStyle.bg} ${termStyle.text}`}
                     >
@@ -253,7 +260,7 @@ export function SupplierTable() {
                   </td>
 
                   {/* Actions */}
-                  <td className="px-5 py-4 text-right">
+                  <td className="px-5 py-4 text-center">
                     <ActionMenu supplierId={supplier.id} />
                   </td>
                 </tr>
@@ -315,30 +322,32 @@ export function SupplierTable() {
       </div>
 
       {/* Pagination footer */}
-      <div className="px-6 py-4 bg-surface-muted/50 border-t border-border flex items-center justify-between rounded-b-xl">
-        <p className="text-sm text-text-muted">Showing 1–6 of 12 suppliers</p>
+      <div className="px-6 py-4 bg-surface-muted/20 border-t border-border flex items-center justify-between">
+        <p className="text-xs text-text-secondary font-medium">
+          Showing 1 to {SUPPLIERS.length} of {TOTAL_SUPPLIERS} employees
+        </p>
         <div className="flex items-center gap-1">
-          <button
-            className="p-1.5 rounded-lg text-text-muted opacity-30 cursor-not-allowed"
-            disabled
-          >
-            <ChevronLeft size={15} strokeWidth={1.75} />
+          <button className="p-1 rounded hover:bg-border text-text-muted transition-colors">
+            <ChevronLeft size={16} />
           </button>
           {[1, 2, 3].map((page) => (
             <button
               key={page}
               className={[
-                "w-8 h-8 rounded-lg text-sm font-semibold transition-colors",
+                "w-8 h-8 rounded text-xs font-bold transition-colors",
                 page === 1
-                  ? "bg-primary text-white"
-                  : "text-text-secondary hover:bg-surface-muted",
+                  ? "bg-primary text-primary-foreground"
+                  : "hover:bg-border text-text-secondary",
               ].join(" ")}
             >
               {page}
             </button>
           ))}
-          <button className="p-1.5 rounded-lg text-text-secondary hover:bg-surface-muted transition-colors">
-            <ChevronRight size={15} strokeWidth={1.75} />
+          {totalPages > 3 && (
+            <span className="text-xs text-text-muted px-1">…</span>
+          )}
+          <button className="p-1 rounded hover:bg-border text-text-muted transition-colors">
+            <ChevronRight size={16} />
           </button>
         </div>
       </div>

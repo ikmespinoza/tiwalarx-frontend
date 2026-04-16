@@ -117,7 +117,7 @@ export function WeeklyScheduleGrid() {
           <thead>
             <tr className="bg-surface-muted/50">
               <th className="p-4 text-left min-w-50">
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-text-muted">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-text-secondary">
                   Employee
                 </span>
               </th>
